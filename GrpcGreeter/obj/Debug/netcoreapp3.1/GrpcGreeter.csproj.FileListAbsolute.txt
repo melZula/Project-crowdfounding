@@ -24,3 +24,4 @@
 /home/zula/github/Project-crowdfounding/GrpcGreeter/obj/Debug/netcoreapp3.1/GrpcGreeter.csproj.CopyComplete
 /home/zula/github/Project-crowdfounding/GrpcGreeter/obj/Debug/netcoreapp3.1/GrpcGreeter.dll
 /home/zula/github/Project-crowdfounding/GrpcGreeter/obj/Debug/netcoreapp3.1/GrpcGreeter.pdb
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Npgsql.dll

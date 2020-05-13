@@ -1,0 +1,17 @@
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient.deps.json
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient.runtimeconfig.json
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient.runtimeconfig.dev.json
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/GrpcGreeterClient.pdb
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/Google.Protobuf.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/Grpc.Core.Api.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/Grpc.Net.Client.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/Grpc.Net.Common.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/bin/Debug/netcoreapp3.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.csprojAssemblyReference.cache
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.AssemblyInfoInputs.cache
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.AssemblyInfo.cs
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.csproj.CopyComplete
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeterClient/obj/Debug/netcoreapp3.0/GrpcGreeterClient.pdb

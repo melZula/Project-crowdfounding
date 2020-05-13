@@ -12,7 +12,11 @@ namespace GrpcGreeter
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+
+            // CreateHostBuilder(args).Build().Run();
+            Store s = new Store("Host=localhost;Username=zula;Password=peterina;Database=foundb");
+            Server server = new Server(s);
+            server.Test();
         }
 
         // Additional configuration is required to successfully run gRPC on macOS.
