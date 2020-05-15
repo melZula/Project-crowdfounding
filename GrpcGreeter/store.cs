@@ -10,6 +10,21 @@ namespace GrpcGreeter
         {
             databaseURL = URL;
         }
+        public void AddUser(String name)
+        {
+            //int id = -1;
+            var conn = new NpgsqlConnection(this.databaseURL);
+            conn.Open();
+            // Insert new user 
+            using (var cmd = new NpgsqlCommand("INSERT INTO foundb.public.'Users' (name) VALUES (@n);", conn))
+            {
+                cmd.Parameters.AddWithValue("n", name);
+                cmd.ExecuteNonQuery();
+                System.Console.WriteLine("inserted");
+            }
+            conn.Close();
+
+        }
         public async void Test()
         {
             await using var conn = new NpgsqlConnection(this.databaseURL);
