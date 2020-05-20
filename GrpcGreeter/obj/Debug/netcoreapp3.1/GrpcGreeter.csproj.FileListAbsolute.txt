@@ -25,3 +25,12 @@
 /home/zula/github/Project-crowdfounding/GrpcGreeter/obj/Debug/netcoreapp3.1/GrpcGreeter.dll
 /home/zula/github/Project-crowdfounding/GrpcGreeter/obj/Debug/netcoreapp3.1/GrpcGreeter.pdb
 /home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Npgsql.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Relational.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Microsoft.Bcl.HashCode.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/System.Collections.Immutable.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
+/home/zula/github/Project-crowdfounding/GrpcGreeter/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
