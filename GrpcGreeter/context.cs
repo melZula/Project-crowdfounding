@@ -5,18 +5,20 @@ namespace GrpcGreeter
 {
     public class ApplicationContext : DbContext
     {
+        private string connectionString;
         public DbSet<User> Users { get; set; }
 
         public DbSet<Found> Founds { get; set; }
 
-        public ApplicationContext()
+        public ApplicationContext(string _connectionString)
         {
+            connectionString = _connectionString;
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=foundb;Username=postgres;Password=peterina");
+            optionsBuilder.UseNpgsql(connectionString);
         }
     }
 }
