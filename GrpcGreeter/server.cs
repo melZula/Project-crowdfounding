@@ -12,8 +12,8 @@ namespace GrpcGreeter
         }
         public void Test()
         {
-            var u = this.store.CreateUser("Kate");
-            System.Console.WriteLine(u.id);
+            var i = store.GetFoundBalance(1);
+            System.Console.WriteLine(i);
         }
     }
 }

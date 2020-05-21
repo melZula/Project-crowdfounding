@@ -11,21 +11,63 @@ namespace GrpcGreeter
         {
             connectionString = _connectionString;
         }
-        public void CreateFound(string name, string ownerName)
+        public Found CreateFound(string name, string ownerName)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
+                Found f = SearchFound(name);
                 User u = SearchUser(ownerName);
-                if (u == null) return;
-                Found f = new Found { name = name, owner = u.id };
+                if (u == null) return null;
+                if (f != null)
+                {
+                    System.Console.WriteLine("Found already exists");
+                    return null;
+                }
+                f = new Found { name = name, owner = u.id };
 
                 db.Founds.Add(f);
                 db.SaveChanges();
 
-                System.Console.WriteLine($"Found {name}");
+                return f;
             }
         }
-        protected User SearchUser(string name)
+        public Found SearchFound(string name)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                try
+                {
+                    Found f = (from found in db.Founds
+                               where found.name == name
+                               select found).Single();
+                    return f;
+                }
+                catch (Exception)
+                {
+                    System.Console.WriteLine("Found not found");
+                    return null;
+                }
+            }
+        }
+        public Found SearchFound(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                try
+                {
+                    Found f = (from found in db.Founds
+                               where found.id == id
+                               select found).Single();
+                    return f;
+                }
+                catch (Exception)
+                {
+                    System.Console.WriteLine("Found not found");
+                    return null;
+                }
+            }
+        }
+        public User SearchUser(string name)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
@@ -33,6 +75,24 @@ namespace GrpcGreeter
                 {
                     User u = (from user in db.Users
                               where user.name == name
+                              select user).Single();
+                    return u;
+                }
+                catch (Exception)
+                {
+                    System.Console.WriteLine("User not found");
+                    return null;
+                }
+            }
+        }
+        public User SearchUser(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                try
+                {
+                    User u = (from user in db.Users
+                              where user.id == id
                               select user).Single();
                     return u;
                 }
@@ -62,6 +122,51 @@ namespace GrpcGreeter
                     db.SaveChanges();
                     return u;
                 }
+            }
+        }
+        public void AddBalance(int userId, int amount)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                User u = SearchUser(userId);
+                if (u == null) return;
+                u.balance += amount;
+                db.Users.Update(u);
+                db.SaveChanges();
+            }
+        }
+        public int GetFoundBalance(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                Found f = SearchFound(id);
+                if (f == null) return 0;
+                else return f.balance;
+            }
+        }
+        public void GiveToFound(int userId, int foundId, int amount)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                Found f = SearchFound(foundId);
+                User u = SearchUser(userId);
+                if (f == null || u == null) return;
+                if (u.balance < amount)
+                {
+                    System.Console.WriteLine("Insufficient funds on account");
+                    return;
+                }
+                if (amount < 0)
+                {
+                    System.Console.WriteLine("Invalid amount");
+                    return;
+                }
+                u.balance -= amount;
+                f.balance += amount;
+                db.Users.Update(u);
+                db.Founds.Update(f);
+                db.SaveChanges();
+
             }
         }
     }
