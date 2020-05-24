@@ -17,6 +17,12 @@ namespace GrpcGreeter {
 
     static readonly grpc::Marshaller<global::GrpcGreeter.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.Id> __Marshaller_greet_Id = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Id.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.Amount> __Marshaller_greet_Amount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Amount.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.UserToFound> __Marshaller_greet_UserToFound = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserToFound.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.Added> __Marshaller_greet_Added = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Added.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.UserAmount> __Marshaller_greet_UserAmount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserAmount.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcGreeter.FoundOwner> __Marshaller_greet_FoundOwner = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.FoundOwner.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply> __Method_SayHello = new grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply>(
         grpc::MethodType.Unary,
@@ -24,6 +30,41 @@ namespace GrpcGreeter {
         "SayHello",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_HelloReply);
+
+    static readonly grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount> __Method_GetFoundBalance = new grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetFoundBalance",
+        __Marshaller_greet_Id,
+        __Marshaller_greet_Amount);
+
+    static readonly grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount> __Method_GetUserBalance = new grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetUserBalance",
+        __Marshaller_greet_Id,
+        __Marshaller_greet_Amount);
+
+    static readonly grpc::Method<global::GrpcGreeter.UserToFound, global::GrpcGreeter.Added> __Method_GiveToFound = new grpc::Method<global::GrpcGreeter.UserToFound, global::GrpcGreeter.Added>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GiveToFound",
+        __Marshaller_greet_UserToFound,
+        __Marshaller_greet_Added);
+
+    static readonly grpc::Method<global::GrpcGreeter.UserAmount, global::GrpcGreeter.Added> __Method_AddBalance = new grpc::Method<global::GrpcGreeter.UserAmount, global::GrpcGreeter.Added>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "AddBalance",
+        __Marshaller_greet_UserAmount,
+        __Marshaller_greet_Added);
+
+    static readonly grpc::Method<global::GrpcGreeter.FoundOwner, global::GrpcGreeter.Added> __Method_CreateFound = new grpc::Method<global::GrpcGreeter.FoundOwner, global::GrpcGreeter.Added>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateFound",
+        __Marshaller_greet_FoundOwner,
+        __Marshaller_greet_Added);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -97,6 +138,86 @@ namespace GrpcGreeter {
       public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.HelloReply> SayHelloAsync(global::GrpcGreeter.HelloRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SayHello, null, options, request);
+      }
+      public virtual global::GrpcGreeter.Amount GetFoundBalance(global::GrpcGreeter.Id request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFoundBalance(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcGreeter.Amount GetFoundBalance(global::GrpcGreeter.Id request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetFoundBalance, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Amount> GetFoundBalanceAsync(global::GrpcGreeter.Id request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFoundBalanceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Amount> GetFoundBalanceAsync(global::GrpcGreeter.Id request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetFoundBalance, null, options, request);
+      }
+      public virtual global::GrpcGreeter.Amount GetUserBalance(global::GrpcGreeter.Id request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserBalance(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcGreeter.Amount GetUserBalance(global::GrpcGreeter.Id request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetUserBalance, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Amount> GetUserBalanceAsync(global::GrpcGreeter.Id request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetUserBalanceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Amount> GetUserBalanceAsync(global::GrpcGreeter.Id request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetUserBalance, null, options, request);
+      }
+      public virtual global::GrpcGreeter.Added GiveToFound(global::GrpcGreeter.UserToFound request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GiveToFound(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcGreeter.Added GiveToFound(global::GrpcGreeter.UserToFound request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GiveToFound, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> GiveToFoundAsync(global::GrpcGreeter.UserToFound request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GiveToFoundAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> GiveToFoundAsync(global::GrpcGreeter.UserToFound request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GiveToFound, null, options, request);
+      }
+      public virtual global::GrpcGreeter.Added AddBalance(global::GrpcGreeter.UserAmount request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddBalance(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcGreeter.Added AddBalance(global::GrpcGreeter.UserAmount request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_AddBalance, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> AddBalanceAsync(global::GrpcGreeter.UserAmount request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddBalanceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> AddBalanceAsync(global::GrpcGreeter.UserAmount request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_AddBalance, null, options, request);
+      }
+      public virtual global::GrpcGreeter.Added CreateFound(global::GrpcGreeter.FoundOwner request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateFound(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcGreeter.Added CreateFound(global::GrpcGreeter.FoundOwner request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateFound, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> CreateFoundAsync(global::GrpcGreeter.FoundOwner request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateFoundAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.Added> CreateFoundAsync(global::GrpcGreeter.FoundOwner request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateFound, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override GreeterClient NewInstance(ClientBaseConfiguration configuration)
