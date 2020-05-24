@@ -2,9 +2,9 @@ using System;
 
 namespace GrpcGreeter
 {
-    class Server
+    public class Server
     {
-        private Store store;
+        public Store store;
         public Server(Store s)
         {
             store = s;

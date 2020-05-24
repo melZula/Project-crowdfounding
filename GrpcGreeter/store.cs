@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GrpcGreeter
 {
-    class Store
+    public class Store
     {
         private String connectionString;
         public Store(String _connectionString)
         {
             connectionString = _connectionString;
         }
+        // CreateFound ...
         public Found CreateFound(string name, string ownerName)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
@@ -49,7 +50,7 @@ namespace GrpcGreeter
                 }
             }
         }
-        public Found SearchFound(int id)
+        public Found SearchFound(long id)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
@@ -85,7 +86,7 @@ namespace GrpcGreeter
                 }
             }
         }
-        public User SearchUser(int id)
+        public User SearchUser(long id)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
@@ -124,18 +125,21 @@ namespace GrpcGreeter
                 }
             }
         }
-        public void AddBalance(int userId, int amount)
+        // AddBalance ...
+        public bool AddBalance(long userId, long amount)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
                 User u = SearchUser(userId);
-                if (u == null) return;
+                if (u == null) return true;
                 u.balance += amount;
                 db.Users.Update(u);
                 db.SaveChanges();
             }
+            return false;
         }
-        public int GetFoundBalance(int id)
+        // GetFoundBalance ...
+        public long GetFoundBalance(long id)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
@@ -144,22 +148,33 @@ namespace GrpcGreeter
                 else return f.balance;
             }
         }
-        public void GiveToFound(int userId, int foundId, int amount)
+        // GetUserBalance ...
+        public long GetUserBalance(long id)
+        {
+            using (ApplicationContext db = new ApplicationContext(connectionString))
+            {
+                User u = SearchUser(id);
+                if (u == null) return 0;
+                else return u.balance;
+            }
+        }
+        // GiveToFound
+        public bool GiveToFound(long userId, long foundId, long amount)
         {
             using (ApplicationContext db = new ApplicationContext(connectionString))
             {
                 Found f = SearchFound(foundId);
                 User u = SearchUser(userId);
-                if (f == null || u == null) return;
+                if (f == null || u == null) return true;
                 if (u.balance < amount)
                 {
                     System.Console.WriteLine("Insufficient funds on account");
-                    return;
+                    return true;
                 }
                 if (amount < 0)
                 {
                     System.Console.WriteLine("Invalid amount");
-                    return;
+                    return true;
                 }
                 u.balance -= amount;
                 f.balance += amount;
@@ -168,6 +183,7 @@ namespace GrpcGreeter
                 db.SaveChanges();
 
             }
+            return false;
         }
     }
 }

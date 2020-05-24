@@ -2,9 +2,9 @@ namespace GrpcGreeter
 {
     public class Found
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public string name { get; set; }
-        public int balance { get; set; }
-        public int owner { get; set; }
+        public long balance { get; set; }
+        public long owner { get; set; }
     }
 }
