@@ -20,13 +20,6 @@ namespace GrpcGreeter
             server = new Server(store);
         }
 
-        public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
-        {
-            return Task.FromResult(new HelloReply
-            {
-                Message = "Hello " + request.Name
-            });
-        }
         public override Task<Amount> GetFoundBalance(Id request, ServerCallContext content)
         {
             return Task.FromResult(new Amount

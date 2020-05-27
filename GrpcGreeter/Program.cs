@@ -12,7 +12,7 @@ namespace GrpcGreeter
     {
         public static void Main(string[] args)
         {
-            // Store store = new Store("Host=localhost;Port=5433;Database=foundb;Username=postgres;Password=peterina");
+            // Store store = new Store("Host=localhost;Port=5433;Database=foundb;Username=postgres;Password=");
             // Server srv = new Server(store);
             // srv.Test();
             CreateHostBuilder(args).Build().Run();
