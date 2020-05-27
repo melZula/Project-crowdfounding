@@ -12,7 +12,7 @@ namespace GrpcGreeter
         }
         public void Test()
         {
-            var i = store.GetFoundBalance(1);
+            var i = store.SearchUser("Zula");
             System.Console.WriteLine(i);
         }
     }
