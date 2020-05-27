@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
@@ -16,7 +17,7 @@ namespace GrpcGreeter
         public GreeterService(ILogger<GreeterService> logger)
         {
             _logger = logger;
-            store = new Store("Host=localhost;Port=5433;Database=foundb;Username=postgres;Password=peterina");
+            store = new Store();
             server = new Server(store);
         }
 

@@ -8,28 +8,16 @@
 using grpc = global::Grpc.Core;
 
 namespace GrpcGreeter {
-  /// <summary>
-  /// The greeting service definition.
-  /// </summary>
   public static partial class Greeter
   {
     static readonly string __ServiceName = "greet.Greeter";
 
-    static readonly grpc::Marshaller<global::GrpcGreeter.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GrpcGreeter.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Id> __Marshaller_greet_Id = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Id.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Amount> __Marshaller_greet_Amount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Amount.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.UserToFound> __Marshaller_greet_UserToFound = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserToFound.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Added> __Marshaller_greet_Added = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Added.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.UserAmount> __Marshaller_greet_UserAmount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserAmount.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.FoundOwner> __Marshaller_greet_FoundOwner = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.FoundOwner.Parser.ParseFrom);
-
-    static readonly grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply> __Method_SayHello = new grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "SayHello",
-        __Marshaller_greet_HelloRequest,
-        __Marshaller_greet_HelloReply);
 
     static readonly grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount> __Method_GetFoundBalance = new grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(
         grpc::MethodType.Unary,
@@ -76,17 +64,6 @@ namespace GrpcGreeter {
     [grpc::BindServiceMethod(typeof(Greeter), "BindService")]
     public abstract partial class GreeterBase
     {
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::GrpcGreeter.HelloReply> SayHello(global::GrpcGreeter.HelloRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
       public virtual global::System.Threading.Tasks.Task<global::GrpcGreeter.Amount> GetFoundBalance(global::GrpcGreeter.Id request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -119,7 +96,6 @@ namespace GrpcGreeter {
     public static grpc::ServerServiceDefinition BindService(GreeterBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SayHello, serviceImpl.SayHello)
           .AddMethod(__Method_GetFoundBalance, serviceImpl.GetFoundBalance)
           .AddMethod(__Method_GetUserBalance, serviceImpl.GetUserBalance)
           .AddMethod(__Method_GiveToFound, serviceImpl.GiveToFound)
@@ -133,7 +109,6 @@ namespace GrpcGreeter {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply>(serviceImpl.SayHello));
       serviceBinder.AddMethod(__Method_GetFoundBalance, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(serviceImpl.GetFoundBalance));
       serviceBinder.AddMethod(__Method_GetUserBalance, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(serviceImpl.GetUserBalance));
       serviceBinder.AddMethod(__Method_GiveToFound, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcGreeter.UserToFound, global::GrpcGreeter.Added>(serviceImpl.GiveToFound));

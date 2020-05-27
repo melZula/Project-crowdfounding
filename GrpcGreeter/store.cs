@@ -6,15 +6,10 @@ namespace GrpcGreeter
 {
     public class Store
     {
-        private String connectionString;
-        public Store(String _connectionString)
-        {
-            connectionString = _connectionString;
-        }
         // CreateFound ...
         public Found CreateFound(string name, string ownerName)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 Found f = SearchFound(name);
                 User u = SearchUser(ownerName);
@@ -34,7 +29,7 @@ namespace GrpcGreeter
         }
         public Found SearchFound(string name)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
@@ -52,7 +47,7 @@ namespace GrpcGreeter
         }
         public Found SearchFound(long id)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
@@ -70,7 +65,7 @@ namespace GrpcGreeter
         }
         public User SearchUser(string name)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
@@ -88,7 +83,7 @@ namespace GrpcGreeter
         }
         public User SearchUser(long id)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
@@ -106,7 +101,7 @@ namespace GrpcGreeter
         }
         public User CreateUser(string name)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 try
                 {
@@ -128,7 +123,7 @@ namespace GrpcGreeter
         // AddBalance ...
         public bool AddBalance(long userId, long amount)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 User u = SearchUser(userId);
                 if (u == null) return true;
@@ -141,7 +136,7 @@ namespace GrpcGreeter
         // GetFoundBalance ...
         public long GetFoundBalance(long id)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 Found f = SearchFound(id);
                 if (f == null) return 0;
@@ -151,7 +146,7 @@ namespace GrpcGreeter
         // GetUserBalance ...
         public long GetUserBalance(long id)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 User u = SearchUser(id);
                 if (u == null) return 0;
@@ -161,7 +156,7 @@ namespace GrpcGreeter
         // GiveToFound
         public bool GiveToFound(long userId, long foundId, long amount)
         {
-            using (ApplicationContext db = new ApplicationContext(connectionString))
+            using (ApplicationContext db = new ApplicationContext())
             {
                 Found f = SearchFound(foundId);
                 User u = SearchUser(userId);

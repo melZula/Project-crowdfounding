@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.Extensions.Configuration;
 
 namespace GrpcGreeter
 {
@@ -10,14 +11,18 @@ namespace GrpcGreeter
 
         public DbSet<Found> Founds { get; set; }
 
-        public ApplicationContext(string _connectionString)
+        public ApplicationContext()
         {
-            connectionString = _connectionString;
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            connectionString = config["ConnectionStrings:foundb"];
             Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             optionsBuilder.UseNpgsql(connectionString);
         }
     }

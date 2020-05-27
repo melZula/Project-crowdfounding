@@ -8,28 +8,16 @@
 using grpc = global::Grpc.Core;
 
 namespace GrpcGreeter {
-  /// <summary>
-  /// The greeting service definition.
-  /// </summary>
   public static partial class Greeter
   {
     static readonly string __ServiceName = "greet.Greeter";
 
-    static readonly grpc::Marshaller<global::GrpcGreeter.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GrpcGreeter.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.HelloReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Id> __Marshaller_greet_Id = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Id.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Amount> __Marshaller_greet_Amount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Amount.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.UserToFound> __Marshaller_greet_UserToFound = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserToFound.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.Added> __Marshaller_greet_Added = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.Added.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.UserAmount> __Marshaller_greet_UserAmount = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.UserAmount.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcGreeter.FoundOwner> __Marshaller_greet_FoundOwner = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcGreeter.FoundOwner.Parser.ParseFrom);
-
-    static readonly grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply> __Method_SayHello = new grpc::Method<global::GrpcGreeter.HelloRequest, global::GrpcGreeter.HelloReply>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "SayHello",
-        __Marshaller_greet_HelloRequest,
-        __Marshaller_greet_HelloReply);
 
     static readonly grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount> __Method_GetFoundBalance = new grpc::Method<global::GrpcGreeter.Id, global::GrpcGreeter.Amount>(
         grpc::MethodType.Unary,
@@ -95,50 +83,6 @@ namespace GrpcGreeter {
       {
       }
 
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::GrpcGreeter.HelloReply SayHello(global::GrpcGreeter.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SayHello(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The response received from the server.</returns>
-      public virtual global::GrpcGreeter.HelloReply SayHello(global::GrpcGreeter.HelloRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_SayHello, null, options, request);
-      }
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.HelloReply> SayHelloAsync(global::GrpcGreeter.HelloRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return SayHelloAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request to send to the server.</param>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncUnaryCall<global::GrpcGreeter.HelloReply> SayHelloAsync(global::GrpcGreeter.HelloRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_SayHello, null, options, request);
-      }
       public virtual global::GrpcGreeter.Amount GetFoundBalance(global::GrpcGreeter.Id request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetFoundBalance(request, new grpc::CallOptions(headers, deadline, cancellationToken));

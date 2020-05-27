@@ -89,7 +89,7 @@ namespace GrpcGreeterClient
                     {
                         var myrep = await client.AddBalanceAsync(
                         new UserAmount { UserId = args[0], Value = args[1] });
-                        System.Console.WriteLine("Response: " + myrep.Status);
+                        System.Console.WriteLine("Response: " + ToStatus(myrep.Status));
                     }
                     else
                     {
