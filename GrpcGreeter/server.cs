@@ -8,7 +8,7 @@ namespace GrpcGreeter
         public Server(Store s)
         {
             store = s;
-            System.Console.WriteLine("Start serve");
+            // System.Console.WriteLine("Start serve");
         }
         public void Test()
         {

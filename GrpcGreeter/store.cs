@@ -158,8 +158,9 @@ namespace GrpcGreeter
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                Found f = SearchFound(foundId);
-                User u = SearchUser(userId);
+                Found f = db.Founds.FromSqlRaw($"SELECT * FROM public.\"Founds\" WHERE id = {foundId} FOR UPDATE").First();
+                User u = db.Users.FromSqlRaw($"SELECT * FROM public.\"Users\" WHERE id = {userId} FOR UPDATE").First();
+
                 if (f == null || u == null) return true;
                 if (u.balance < amount)
                 {
@@ -175,6 +176,9 @@ namespace GrpcGreeter
                 f.balance += amount;
                 db.Users.Update(u);
                 db.Founds.Update(f);
+
+                // Serializable isolation: no block for SELECT, UPDATE and DELETE consistently
+                // By default: Read Commited
                 db.SaveChanges();
 
             }
